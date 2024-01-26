@@ -1,0 +1,27 @@
+{{currentDate| date : 'dd-MM-yyyy'}}
+<div class="row mb-3">
+  <div class="col">
+    <!-- <input type="text" class="form-control" placeholder="Search..."
+    [value]="filterBy"    
+    (input)="onInput($event)"> -->
+    <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterBy">
+  {{filterBy}}
+  </div>
+</div>
+<div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3">
+    <div *ngFor="let product of filteredProducts" class="col">
+        <div class="card">
+        <img [src]="product.image" class="card-img-top" [alt]="product.name"[ngStyle]="myStyle"> 
+         <!-- [SRC] it means property binding -->
+        <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <strong>{{product.price |currency : 'INR' : 'Rs. '}}</strong>
+        <p>
+        <a href="#" class="btn btn-primary" (click)="addtocart($event,product)">Add to Cart</a>    
+        <!-- (click) it means event binding -->
+        </p>
+        </div>
+    </div>
+  </div>
+</div>
